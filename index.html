@@ -44,7 +44,7 @@
             <div class="details">
               <div ng-class="{'detail':true, 'selected': currentMapKey === 'loanCount'}">
                 <div class="label">Loan Volume:</div>
-                <div class="value">{{selectedState.loanCount}}</div>
+                <div class="value">{{selectedState.loanCount | number}}</div>
                 <div class="dist-chart">
                   <div class="median" style="left:{{100*distributionStats.loanCount.medianLocation}}%"></div>
                   <div ng-repeat="bucket in distributionStats.loanCount.buckets track by $index"
@@ -56,7 +56,7 @@
               </div> <!-- .detail -->
               <div ng-class="{'detail':true, 'selected': currentMapKey === 'avgIncome'}">
                 <div class="label">Average Income:</div>
-                <div class="value" ng-if="selectedState.loanCount">${{selectedState.avgIncome}}</div>
+                <div class="value" ng-if="selectedState.loanCount">${{selectedState.avgIncome | number}}</div>
                 <div class="value" ng-if="!selectedState.loanCount">NA</div>
                 <div class="dist-chart">
                   <div class="median" style="left:{{100*distributionStats.avgIncome.medianLocation}}%"></div>

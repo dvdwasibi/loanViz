@@ -30,15 +30,15 @@ section.title{
 }
 
 .state-details .detail{
-  padding: 15px 35px;;
-  transition: padding ease-in-out 0.2s,
-              background ease-in-out 0.2s;;
+  padding: 15px 35px;
+  border: 1px solid #FFF;
+  transition: background ease-in-out 0.2s,
+              border ease-in-out 0.2s;;
   background: white;
 }
 
 .state-details .detail.selected {
   border: 1px solid #ccc;
-  padding: 15px 35px;
   background: #eee
 }
 
@@ -68,7 +68,7 @@ section.title{
 .dist-chart .bucket{
   display: inline-block;
   width: 1px;
-  background: #ccc;
+  background: #999;
 }
 
 .dist-chart .median{

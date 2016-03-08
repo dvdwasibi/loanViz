@@ -42,17 +42,6 @@ myApp.controller('MainController', ['$scope', '$http', function($scope, $http) {
     var stateData = breakdownData.state;
     var mapData = {};
 
-    var max = Number.NEGATIVE_INFINITY;
-    var min = Number.POSITIVE_INFINITY;
-    _.forOwn(stateData, function(data) {
-      if(data[$scope.currentMapKey] > max) {
-        max = data[$scope.currentMapKey];
-      }
-      if(data[$scope.currentMapKey] < min) {
-        min = data[$scope.currentMapKey];
-      }
-    });
-
     var paletteScale = d3.scale.linear()
       .domain([
         $scope.distributionStats[$scope.currentMapKey].min,
@@ -70,7 +59,6 @@ myApp.controller('MainController', ['$scope', '$http', function($scope, $http) {
       mapData[stateID] = {
         fillColor: fill,
       }
-      mapData[stateID][$scope.currentMapKey] = data[$scope.currentMapKey];
     });
     return mapData;
   };
@@ -94,7 +82,7 @@ myApp.controller('MainController', ['$scope', '$http', function($scope, $http) {
         },
         highlightBorderWidth: 2,
         highlightFillColor: function(geo) {
-          return geo['fillColor'] || '#FFF';
+          return geo.fillColor || '#FFF';
         },
       },
       data: generateMapData()
@@ -169,7 +157,6 @@ myApp.controller('MainController', ['$scope', '$http', function($scope, $http) {
       });
     });
     $scope.distributionStats = distributionStats;
-    console.log(distributionStats);
   }
 
 
