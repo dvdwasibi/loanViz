@@ -1,0 +1,85 @@
+<!doctype html>
+<html  lang="en" style="height: 100%;" ng-app="LoanViz">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Loan Visualization</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700|Merriweather:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/main.css">
+
+  </head>
+  <body style="height: 100%;" ng-controller="MainController">
+
+    <section class="title">
+      <h3> Loan Geographic Breakdown</h3>
+    </section>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="twelve columns map-option-container">
+          <div ng-repeat="option in mapOptions"
+              ng-class="{'map-option':true, 'selected': option.key === currentMapKey}"
+              ng-click="selectMapView(option)">
+              {{option.name}}
+          </div>
+        </div>
+      </div> <!-- .row -->
+      <div class="row">
+        <div class="twelve columns" style="height: 450px;" id="map_viz">
+        </div>
+      </div> <!-- .row -->
+      <div class="row" ng-if="selectedState">
+        <div class="six columns offset-by-three">
+          <div class="state-details">
+            <div class="name">
+              <h4>{{selectedState.name}}</h4>
+            </div>
+            <div class="details">
+              <div ng-class="{'detail':true, 'selected': currentMapKey === 'loanCount'}">
+                <div class="label">Loan Volume:</div>
+                <div class="value">{{selectedState.loanCount}}</div>
+                <div class="dist-chart">
+                  <div class="median" style="left:{{100*distributionStats.loanCount.medianLocation}}%"></div>
+                  <div class="plot" style="left:{{100*selectedState.distributionLocation.loanCount}}%"></div>
+                </div>
+                <div class=""></div>
+              </div>
+              <div ng-class="{'detail':true, 'selected': currentMapKey === 'avgIncome'}">
+                <div class="label">Average Income:</div>
+                <div class="value" ng-if="selectedState.loanCount">${{selectedState.avgIncome}}</div>
+                <div class="value" ng-if="!selectedState.loanCount">NA</div>
+                <div class="dist-chart">
+                  <div class="median" style="left:{{100*distributionStats.avgIncome.medianLocation}}%"></div>
+                  <div class="plot" style="left:{{100*selectedState.distributionLocation.avgIncome}}%"></div>
+                </div>
+              </div>
+              <div ng-class="{'detail':true, 'selected': currentMapKey === 'pastDelinquencyPercent'}">
+                <div class="label">Past Delinquency Rate:</div>
+                <div class="value" ng-if="selectedState.loanCount">{{selectedState.pastDelinquencyPercent}}%</div>
+                <div class="value" ng-if="!selectedState.loanCount">NA</div>
+                <div class="dist-chart">
+                  <div class="median" style="left:{{100*distributionStats.pastDelinquencyPercent.medianLocation}}%"></div>
+                  <div class="plot" style="left:{{100*selectedState.distributionLocation.pastDelinquencyPercent}}%"></div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- .state-details -->
+        </div>
+      </div> <!-- .row -->
+    </div> <!-- .container -->
+  </body>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  <script src="//datamaps.github.io/scripts/0.4.4/datamaps.usa.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <script src="/app.js"></script>
+</html>

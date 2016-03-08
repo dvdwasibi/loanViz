@@ -1,0 +1,14 @@
+{
+  "name": "Loan_Visualization",
+  "version": "1.0.0",
+  "description": "Loan Visualization for DV01",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Yang",
+  "dependencies": {
+    "jsonfile": "^2.2.3",
+    "lodash": "latest"
+  }
+}

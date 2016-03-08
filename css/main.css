@@ -1,0 +1,79 @@
+section.title{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.map-option-container{
+  text-align: center;
+  margin: 10px 0 5px 0;
+}
+
+.map-option{
+  display: inline-block;
+  border-bottom: 2px solid rgba(0,0,0,0);
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.map-option:hover{
+  border-bottom: 2px solid rgba(63, 103, 144, 0.5);
+}
+
+.map-option.selected{
+  border-bottom: 2px solid rgb(63, 103, 144);
+}
+
+
+.state-details .detail{
+  padding: 10px;
+  transition: padding ease-in-out 0.2s,
+              background ease-in-out 0.2s;;
+  background: white;
+}
+
+.state-details .detail.selected {
+  border: 1px solid #ccc;
+  padding: 15px 10px;
+  background: #eee
+}
+
+
+.state-details .detail .label {
+  display: inline-block;
+  width: 200px;
+}
+
+.state-details .detail .value {
+  display: inline-block;
+  font-weight: 700;
+  width: 75px;
+}
+
+
+
+.dist-chart{
+  width: 100px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  display: inline-block;
+  top: -4px;
+}
+
+.dist-chart .median{
+  height: 15px;
+  margin-top: -7px;
+  border-left: 1px solid black;
+  position: absolute;
+}
+
+.dist-chart .plot{
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+  margin-left: -6px;
+  margin-top: -6px;
+  background: rgb(63, 103, 144);
+  opacity: 0.8;
+  position: absolute;
+  transition: all ease-in-out 0.3s;
+}
