@@ -4,11 +4,16 @@ var myApp = angular.module('LoanViz',[]);
 myApp.controller('MainController', ['$scope', '$http', function($scope, $http) {
   var mapViz;
   var breakdownData;
+  var colorMapping = {
+    loanCount: '#02386F',
+    avgIncome: '#219E60',
+    pastDelinquencyPercent: '#BF1F1F'
+  }
 
   $scope.mapOptions = [
     {
       key: 'loanCount',
-      name: 'Loan Volume'
+      name: 'Loan Volume',
     },
     {
       key: 'avgIncome',
@@ -53,7 +58,7 @@ myApp.controller('MainController', ['$scope', '$http', function($scope, $http) {
         $scope.distributionStats[$scope.currentMapKey].min,
         $scope.distributionStats[$scope.currentMapKey].max
       ])
-      .range(["#EFEFEF","#02386F"]);
+      .range(["#EFEFEF",colorMapping[$scope.currentMapKey]]);
 
     _.forOwn(stateData, function(data, stateID) {
       var fill;

@@ -73,7 +73,16 @@ section.title{
   margin-left: -6px;
   margin-top: -6px;
   background: rgb(63, 103, 144);
-  opacity: 0.8;
+  opacity: 0.9;
   position: absolute;
   transition: all ease-in-out 0.3s;
+  box-shadow: 1px 1px 3px 0px rgba(103, 103, 103, 0.4);
+}
+
+.dist-chart .plot.red{
+  background: #BF1F1F;
+}
+
+.dist-chart .plot.green{
+  background: #219E60;
 }

@@ -57,7 +57,7 @@
                 <div class="value" ng-if="!selectedState.loanCount">NA</div>
                 <div class="dist-chart">
                   <div class="median" style="left:{{100*distributionStats.avgIncome.medianLocation}}%"></div>
-                  <div class="plot" style="left:{{100*selectedState.distributionLocation.avgIncome}}%"></div>
+                  <div class="plot green" style="left:{{100*selectedState.distributionLocation.avgIncome}}%"></div>
                 </div>
               </div>
               <div ng-class="{'detail':true, 'selected': currentMapKey === 'pastDelinquencyPercent'}">
@@ -66,7 +66,7 @@
                 <div class="value" ng-if="!selectedState.loanCount">NA</div>
                 <div class="dist-chart">
                   <div class="median" style="left:{{100*distributionStats.pastDelinquencyPercent.medianLocation}}%"></div>
-                  <div class="plot" style="left:{{100*selectedState.distributionLocation.pastDelinquencyPercent}}%"></div>
+                  <div class="plot red" style="left:{{100*selectedState.distributionLocation.pastDelinquencyPercent}}%"></div>
                 </div>
               </div>
             </div>
