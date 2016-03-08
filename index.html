@@ -47,29 +47,38 @@
                 <div class="value">{{selectedState.loanCount}}</div>
                 <div class="dist-chart">
                   <div class="median" style="left:{{100*distributionStats.loanCount.medianLocation}}%"></div>
+                  <div ng-repeat="bucket in distributionStats.loanCount.buckets track by $index"
+                      class="bucket"
+                      style="height:{{20*bucket}}px;"></div>
                   <div class="plot" style="left:{{100*selectedState.distributionLocation.loanCount}}%"></div>
                 </div>
                 <div class=""></div>
-              </div>
+              </div> <!-- .detail -->
               <div ng-class="{'detail':true, 'selected': currentMapKey === 'avgIncome'}">
                 <div class="label">Average Income:</div>
                 <div class="value" ng-if="selectedState.loanCount">${{selectedState.avgIncome}}</div>
                 <div class="value" ng-if="!selectedState.loanCount">NA</div>
                 <div class="dist-chart">
                   <div class="median" style="left:{{100*distributionStats.avgIncome.medianLocation}}%"></div>
+                  <div ng-repeat="bucket in distributionStats.avgIncome.buckets track by $index"
+                      class="bucket"
+                      style="height:{{20*bucket}}px;"></div>
                   <div class="plot green" style="left:{{100*selectedState.distributionLocation.avgIncome}}%"></div>
                 </div>
-              </div>
+              </div> <!-- .detail -->
               <div ng-class="{'detail':true, 'selected': currentMapKey === 'pastDelinquencyPercent'}">
                 <div class="label">Past Delinquency Rate:</div>
                 <div class="value" ng-if="selectedState.loanCount">{{selectedState.pastDelinquencyPercent}}%</div>
                 <div class="value" ng-if="!selectedState.loanCount">NA</div>
                 <div class="dist-chart">
                   <div class="median" style="left:{{100*distributionStats.pastDelinquencyPercent.medianLocation}}%"></div>
+                  <div ng-repeat="bucket in distributionStats.pastDelinquencyPercent.buckets track by $index"
+                      class="bucket"
+                      style="height:{{20*bucket}}px;"></div>
                   <div class="plot red" style="left:{{100*selectedState.distributionLocation.pastDelinquencyPercent}}%"></div>
                 </div>
-              </div>
-            </div>
+              </div> <!-- .detail -->
+            </div> <!-- .details -->
           </div> <!-- .state-details -->
         </div>
       </div> <!-- .row -->

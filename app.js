@@ -138,22 +138,38 @@ myApp.controller('MainController', ['$scope', '$http', function($scope, $http) {
         median: median,
         min: min,
         max: max,
-        medianLocation: medianLocation
+        medianLocation: medianLocation,
+        buckets: []
       }
 
+      for(var i=0; i<=100; i++) {
+        distributionStats[key].buckets[i] = 0;
+      }
+
+      var bucketMax = Number.NEGATIVE_INFINITY;
       stateArray.forEach(function(state) {
         if(!state.distributionLocation) {
           state.distributionLocation = {};
         }
         if(state.loanCount) {
           state.distributionLocation[key] = (state[key]-min) / (max-min);
+          var bucketIndex = Math.round(100*state.distributionLocation[key]);
+          distributionStats[key].buckets[bucketIndex]++;
+          if(distributionStats[key].buckets[bucketIndex] > bucketMax) {
+            bucketMax = distributionStats[key].buckets[bucketIndex];
+          }
         } else {
           state.distributionLocation[key] = 0;
         }
+      });
 
-      })
+      //normalize buckets
+      distributionStats[key].buckets = distributionStats[key].buckets.map(function(bucket) {
+        return bucket/bucketMax;
+      });
     });
     $scope.distributionStats = distributionStats;
+    console.log(distributionStats);
   }
 
 

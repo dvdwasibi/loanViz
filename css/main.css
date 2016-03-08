@@ -24,8 +24,13 @@ section.title{
 }
 
 
+.state-details .name{
+  text-align: center;
+  margin: 5px 0 -10px 0;
+}
+
 .state-details .detail{
-  padding: 10px;
+  padding: 15px 35px;;
   transition: padding ease-in-out 0.2s,
               background ease-in-out 0.2s;;
   background: white;
@@ -33,7 +38,7 @@ section.title{
 
 .state-details .detail.selected {
   border: 1px solid #ccc;
-  padding: 15px 10px;
+  padding: 15px 35px;
   background: #eee
 }
 
@@ -52,18 +57,27 @@ section.title{
 
 
 .dist-chart{
-  width: 100px;
+  width: 101px;
   border-bottom: 1px solid #ccc;
   position: relative;
   display: inline-block;
   top: -4px;
+  font-size: 0px;
+}
+
+.dist-chart .bucket{
+  display: inline-block;
+  width: 1px;
+  background: #ccc;
 }
 
 .dist-chart .median{
-  height: 15px;
-  margin-top: -7px;
-  border-left: 1px solid black;
+  height: 11px;
+  width: 1px;
+  background: #1B99EC;
+  border-radius: 50%;
   position: absolute;
+  bottom: -12px;
 }
 
 .dist-chart .plot{
